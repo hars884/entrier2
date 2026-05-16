@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div><h2>Employee Management</h2>
+    <a style="margin-left: 10px;" href="/logout">Logout</a> </div>
+    <div>
+    <h1>Welcome to the Dashboard</h1>
+    <p>You are logged in as {{ username }}.</p>
+    </div>  
+    <button><a href="/newemployee">Add Employee</a></button>
+    <div>
+        <table border="1">
+            <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Gmail</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for employee in employeedata %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.gmail }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.salary }}</td>
+                <td><a href="/edit/{{ employee.name }}">Edit</a></td>
+                <td><a href="/delete/{{ employee.name }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+
+</body>
+</html>
