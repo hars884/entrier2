@@ -69,13 +69,13 @@ def newemployee():
         return redirect(url_for('dashboard'))
     return render_template('newemployee.html')
 
-@app.route('/delete/<string:name>', methods=['POST'])
+@app.route('/delete/<string:name>', methods=['POST','GET'])
 def delete_employee(name):
     employee = Employee.query.get(name)
     if employee:
         db.session.delete(employee)
         db.session.commit()
-    return redirect(url_for('dashboard'), username=curr_user)
+    return redirect(url_for('dashboard'))
 
 @app.route('/edit/<string:name>', methods=['GET','POST'])
 def edit_employee_form(name):
